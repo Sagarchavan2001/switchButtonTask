@@ -19,8 +19,9 @@ class secondViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     var dataFromFVC4: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailsTableView.dataSource = self
         detailsTableView.delegate  = self
+        detailsTableView.dataSource = self
+    
         let nibname = UINib(nibName: "detailsTableViewCell", bundle: nil)
         detailsTableView.register(nibname, forCellReuseIdentifier: "detailsTableViewCell")
         
@@ -33,12 +34,10 @@ class secondViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.detailsTableView.dequeueReusableCell(withIdentifier: "detailsTableViewCell", for: indexPath) as! detailsTableViewCell
-        cell.rollNo.text = dataFromFVC1
-        cell.StudentName.text = dataFromFVC2
-        cell.studentEmail.text = dataFromFVC3
-        cell.studentAddress.text = dataFromFVC4
-        detailsTableView.reloadData()
-      
+        cell.rollNo.text = "\(dataFromFVC1!)"
+        cell.StudentName.text = "\(dataFromFVC2!)"
+        cell.studentEmail.text = "\(dataFromFVC3!)"
+        cell.studentAddress.text = "\(dataFromFVC4!)"
         return cell
     }
     
